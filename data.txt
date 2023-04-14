@@ -1,6 +1,5 @@
 Grow
 (on-chain entity name: form label)
-
 id : "Transaction ID"
 name : "Plant Lot Name"
 lotNo : "Plant Lot Number"
@@ -8,13 +7,56 @@ plantLocationName : "Growing Location"
 plantSubLocationName : "Sub Growing Location"
 plantId : "Total Planted"
 plantGrowthStageName : "Growth Stage"
-
 itemId : "Item Used for Growing"
 itemLotNo : "Item Lot Number"
-
 companyId : "Company Name"
 licenseId : "Cultivation License Number"
-
 createdAt : "Created Date"
 createdBy : "Created By"
 isActive : "Status"
+
+
+Harvest
+(on-chain entity name: form label)
+id  : "Transaction ID"
+Gtin    : "Harvest Lot Number"
+itemCategory : "Item Category"
+name : "Item Name"
+Description : "Description"
+Quantity : "Quantity Harvested"
+itemUM : "UoM"
+name : "Ref. Plant Lot Name"
+lotNo : "Ref. Plant Lot Number"
+licenseId : "Cultivation License Number"
+createdAt : "Created Date"
+createdBy : "Created By"
+isActive : "Status"
+
+Production
+(on-chain entity name: form label)
+Id : Transaction ID
+productionLotNo : Production Lot Number
+processName : Process Name
+itemCategoryName : Item Category
+itemName : Item Name
+description : Description
+quantity : Quantity Produced
+um : UoM
+expirydate: Expiry Date
+plantlotname : Ref. Plant Lot Name
+plantlotnumber : Ref. Plant Lot Number
+licensenumber : Extraction License Number
+createddate : Created Date
+createdby : Created By
+isActive : Status
+
+Sales
+Id : Transaction ID
+seller_license_number : Seller License Number
+buyer_license_number : Buyer License Number
+transaction_date : Transaction Date
+product_category : Product Category
+product_name : Product Name
+product_quantity : Quantity
+um : UoM
+price : Price

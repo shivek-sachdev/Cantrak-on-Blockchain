@@ -9,7 +9,7 @@ st.sidebar.markdown("[Production](https://www.yahoo.com)")
 
 # Set page title and add image
 st.title("Cantrak on Polygon Blockchain")
-st.image("https://media.istockphoto.com/id/828088276/vector/qr-code-illustration.jpg", width=200)
+st.image("https://pg888-resources.s3.ap-southeast-1.amazonaws.com/organizationLogos/b5c7e5fa-0cf0-418e-acf9-b4a0dc25ccae.png", width=200)
 
 # Define the input form for the user to enter data
 st.header("Enter the following details:")

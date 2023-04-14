@@ -3,7 +3,6 @@ import pandas as pd
 import requests
 import time
 
-
 # Load data from CSV file
 data = pd.read_csv("Cantrak-on-Blockchain\cantrak_data.csv", encoding="TIS-620")
 
