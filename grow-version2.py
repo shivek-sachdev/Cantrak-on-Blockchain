@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import requests
+import time
+
 
 # Load data from CSV file
 data = pd.read_csv("Cantrak-on-Blockchain\cantrak_data.csv", encoding="TIS-620")
@@ -39,7 +41,7 @@ poly_url = "https://api.owlracle.info/v4/poly/gas"
 eth_url = "https://api.owlracle.info/v4/eth/gas"
 
 # Set the request parameters
-params = {"apikey": "8cc9f667b99e499ba630a95cac6bd25c", "blocks": 200, "accept": 100}
+params = {"apikey": "7f994e714d214c91ad79a3e3284f5585", "blocks": 200, "accept": 100}
 
 # Call the poly endpoint
 poly_response = requests.get(poly_url, params=params)
@@ -118,7 +120,9 @@ if st.button("Submit"):
 
     # Call the API and handle the response
     with st.spinner("Loading... Please Wait"):
+        start_time = time.time() # start the timer
         response = requests.post("https://ecu-api.avalue.co.th/api/cnb/grow", json=payload)
+        end_time = time.time() # stop the timer
 
     if response.status_code == 200:
         result = response.json()
@@ -128,6 +132,11 @@ if st.button("Submit"):
         num_transactions = st.session_state.get("num_transactions", 0)
         num_transactions += 1
         st.session_state.num_transactions = num_transactions
+
+        # Update time elapsed metric
+        time_elapsed = st.session_state.get("time_elapsed", 0)
+        time_elapsed += end_time - start_time
+        st.session_state.time_elapsed = time_elapsed
     else:
         st.error("Error: Unable to write data onto the Blockchain.")
 
@@ -136,3 +145,7 @@ st.sidebar.header("Blockchain Metrics")
 num_transactions = st.session_state.get("num_transactions", 0)
 st.sidebar.subheader("Number of Transactions")
 st.sidebar.write(num_transactions)
+
+time_elapsed = st.session_state.get("time_elapsed", 0)
+st.sidebar.subheader("Time Elapsed")
+st.sidebar.write(f"{time_elapsed:.2f} seconds")
