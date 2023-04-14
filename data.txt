@@ -1,0 +1,20 @@
+Grow
+(on-chain entity name: form label)
+
+id : "Transaction ID"
+name : "Plant Lot Name"
+lotNo : "Plant Lot Number"
+plantLocationName : "Growing Location"
+plantSubLocationName : "Sub Growing Location"
+plantId : "Total Planted"
+plantGrowthStageName : "Growth Stage"
+
+itemId : "Item Used for Growing"
+itemLotNo : "Item Lot Number"
+
+companyId : "Company Name"
+licenseId : "Cultivation License Number"
+
+createdAt : "Created Date"
+createdBy : "Created By"
+isActive : "Status"
