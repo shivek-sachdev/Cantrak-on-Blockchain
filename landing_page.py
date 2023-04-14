@@ -1,34 +1,34 @@
 import streamlit as st
-import random
 
-# Define the emojis and labels for each box
-BOXES = {
-    "Grow": {"emoji": "🌱", "label": "Growing ID"},
-    "Harvest": {"emoji": "🌾", "label": "Harvest ID"},
-    "Production": {"emoji": "🏭", "label": "Production ID", "additional_label": "Process Name"},
-    "Sales": {"emoji": "💰", "label": "Sales ID", "additional_label": "Sales Amount"},
+# Define your pages/views as Python functions
+def home():
+    st.title("Welcome to my app!")
+    st.write("This is the home page.")
+
+def page1():
+    st.title("Page 1")
+    st.write("This is page 1.")
+
+def page2():
+    st.title("Page 2")
+    st.write("This is page 2.")
+
+# Define a dictionary that maps page names to functions
+PAGES = {
+    "Home": home,
+    "Page 1": page1,
+    "Page 2": page2,
 }
 
-# Define a function to generate a random emoji for each box
-def get_random_emoji():
-    return random.choice(["🍎", "🍇", "🍅", "🍓", "🥕", "🍆", "🥦", "🌽", "🥒"])
-
-# Define the Streamlit app
+# Render the navigation menu and page content based on the selected menu item
 def app():
-    st.set_page_config(page_title="Select an option")
+    st.set_page_config(page_title="Multi-page app")
 
-    # Render the boxes at the top of the page
-    st.title("Select an option")
-    selected_box = st.radio("", list(BOXES.keys()))
+    st.sidebar.title("Navigation")
+    selection = st.sidebar.radio("", list(PAGES.keys()))
 
-    # Render the form based on the selected box
-    st.subheader(f"{BOXES[selected_box]['emoji']} {selected_box}")
-    data_input = st.text_input(BOXES[selected_box]["label"])
-
-    # Render additional input field and label for Production and Sales boxes
-    if selected_box in ["Production", "Sales"]:
-        additional_label = BOXES[selected_box]["additional_label"]
-        additional_input = st.text_input(additional_label)
+    page = PAGES[selection]
+    page()
 
 if __name__ == "__main__":
     app()
