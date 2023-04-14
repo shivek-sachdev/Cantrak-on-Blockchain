@@ -9,10 +9,6 @@ BOXES = {
     "Sales": {"emoji": "💰", "label": "Sales ID", "additional_label": "Sales Amount"},
 }
 
-# Define a function to generate a random emoji for each box
-def get_random_emoji():
-    return random.choice(["🍎", "🍇", "🍅", "🍓", "🥕", "🍆", "🥦", "🌽", "🥒"])
-
 # Define the Streamlit app
 def app():
     st.set_page_config(page_title="Select an option")
