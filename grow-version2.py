@@ -20,12 +20,14 @@ selected_row = data.loc[data["Transaction ID"] == selected_id].iloc[0]
 # Display the rest of the data for the selected Transaction ID
 name = st.text_input("Plant Lot Name", selected_row["Plant Lot Name"])
 lotNo = st.text_input("Plant Lot Number", selected_row["Plant Lot Number"])
-plantLocationName = st.text_input("Growing Location", selected_row["Growing Location"])
-plantSubLocationName = st.text_input("Sub Growing Location", selected_row["Sub Growing Location"])
-plantId = st.text_input("Total Planted", selected_row["Total Planted"])
-plantGrowthStageName = st.text_input("Growth Stage", selected_row["Growth Stage"])
-itemId = st.text_input("Item Used for Growing", selected_row["Item Used for Growing"])
-itemLotNo = st.text_input("Item Lot Number", selected_row["Item Lot Number"])
+
+with st.expander("Cultivation Details"):
+    plantLocationName = st.text_input("Growing Location", selected_row["Growing Location"])
+    plantSubLocationName = st.text_input("Sub Growing Location", selected_row["Sub Growing Location"])
+    plantId = st.text_input("Total Planted", selected_row["Total Planted"])
+    plantGrowthStageName = st.text_input("Growth Stage", selected_row["Growth Stage"])
+    itemId = st.text_input("Item Used for Growing", selected_row["Item Used for Growing"])
+    itemLotNo = st.text_input("Item Lot Number", selected_row["Item Lot Number"])
 
 # Second part - Transaction Details (expandable box)
 with st.expander("Additional Details"):
@@ -40,7 +42,7 @@ poly_url = "https://api.owlracle.info/v4/poly/gas"
 eth_url = "https://api.owlracle.info/v4/eth/gas"
 
 # Set the request parameters
-params = {"apikey": "7f994e714d214c91ad79a3e3284f5585", "blocks": 200, "accept": 100}
+params = {"apikey": "37468d9a4df84c0797dabe964545f491", "blocks": 200, "accept": 100}
 
 # Call the poly endpoint
 poly_response = requests.get(poly_url, params=params)

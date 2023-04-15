@@ -20,17 +20,21 @@ selected_row = data.loc[data["Transaction ID"] == selected_id].iloc[0]
 # Display the rest of the data for the selected Transaction ID
 transaction_id = st.text_input("Transaction ID", selected_row["Transaction ID"])
 harvest_lot_number = st.text_input("Harvest Lot Number", selected_row["Harvest Lot Number"])
-item_category = st.text_input("Item Category", selected_row["Item Category"])
-item_name = st.text_input("Item Name", selected_row["Item Name"])
-description = st.text_input("Description", selected_row["Description"])
-quantity_harvested = st.text_input("Quantity Harvested", selected_row["Quantity Harvested"])
-uom = st.text_input("UoM", selected_row["UoM"])
-ref_plant_lot_name = st.text_input("Ref. Plant Lot Name", selected_row["Ref. Plant Lot Name"])
-ref_plant_lot_number = st.text_input("Ref. Plant Lot Number", selected_row["Ref. Plant Lot Number"])
-cultivation_license_number = st.text_input("Cultivation License Number", selected_row["Cultivation License Number"])
-created_date = st.text_input("Created Date", selected_row["Created Date"])
-created_by = st.text_input("Created By", selected_row["Created By"])
-status = st.text_input("Status", selected_row["Status"])
+
+with st.expander("Harvest Details"):
+    item_category = st.text_input("Item Category", selected_row["Item Category"])
+    item_name = st.text_input("Item Name", selected_row["Item Name"])
+    description = st.text_input("Description", selected_row["Description"])
+    quantity_harvested = st.text_input("Quantity Harvested", selected_row["Quantity Harvested"])
+    uom = st.text_input("UoM", selected_row["UoM"])
+
+with st.expander("Additional Details"):
+    ref_plant_lot_name = st.text_input("Ref. Plant Lot Name", selected_row["Ref. Plant Lot Name"])
+    ref_plant_lot_number = st.text_input("Ref. Plant Lot Number", selected_row["Ref. Plant Lot Number"])
+    cultivation_license_number = st.text_input("Cultivation License Number", selected_row["Cultivation License Number"])
+    created_date = st.text_input("Created Date", selected_row["Created Date"])
+    created_by = st.text_input("Created By", selected_row["Created By"])
+    status = st.text_input("Status", selected_row["Status"])
 
 # Define the submit button
 if st.button("Submit"):
@@ -74,6 +78,11 @@ if st.button("Submit"):
         st.error("Error: Unable to write data onto the Blockchain.")
 
 # Define dashboard
+st.sidebar.header("Cantrak QR Trace")
+# Display QR Code in sidebar
+image_path = "Cantrak-on-Blockchain/qr-codes/{}.png".format(selected_id)
+st.sidebar.image(image_path, width=300)
+
 st.sidebar.header("Blockchain Metrics")
 num_transactions = st.session_state.get("num_transactions", 0)
 st.sidebar.subheader("Number of Transactions")
