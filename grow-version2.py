@@ -128,6 +128,7 @@ if st.button("Submit"):
     if response.status_code == 200:
         result = response.json()
         st.success(f"Success! isCreate: {result['isCreate']}, hashId: {result['hashId']}")
+        st.success(f"Validate your transaction here: {result['isCreate']}, hashId: {result['hashId']}")
         
         # Update dashboard
         num_transactions = st.session_state.get("num_transactions", 0)

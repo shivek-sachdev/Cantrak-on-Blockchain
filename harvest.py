@@ -74,6 +74,17 @@ if st.button("Submit"):
         time_elapsed = st.session_state.get("time_elapsed", 0)
         time_elapsed += end_time - start_time
         st.session_state.time_elapsed = time_elapsed
+
+        #call Get Harvest API to display URL
+        with st.spinner("Loading... Please Wait"):
+            url = f"https://ecu-api.avalue.co.th/api/cnb/harvest/{transaction_id}"
+            response = requests.get(url)
+
+        if response.status_code == 200:
+            result = response.json()
+            #st.success(f"Success! hashId: {result['hashId']}")
+            st.success(f"Validate your transaction here: {result['explorerURL']}")
+
     else:
         st.error("Error: Unable to write data onto the Blockchain.")
 
