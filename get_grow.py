@@ -12,9 +12,13 @@ if st.button("Submit"):
     url = f"https://ecu-api.avalue.co.th/api/cnb/grow/{id_value}"
     response = requests.get(url)
 
-    # Display the entire result as JSON on the screen
+    # Display only the explorerURL from the JSON response
     if response.status_code == 200:
         data = response.json()
-        st.json(data)
+        if 'explorerURL' in data:
+            st.write(f"Explorer URL: {data['explorerURL']}")
+        else:
+            st.write("Explorer URL not found in response.")
     else:
         st.write("Error fetching data from API")
+

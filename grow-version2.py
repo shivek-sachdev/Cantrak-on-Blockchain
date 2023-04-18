@@ -128,7 +128,6 @@ if st.button("Submit"):
     if response.status_code == 200:
         result = response.json()
         st.success(f"Success! isCreate: {result['isCreate']}, hashId: {result['hashId']}")
-        st.success(f"Validate your transaction here: {result['isCreate']}, hashId: {result['hashId']}")
         
         # Update dashboard
         num_transactions = st.session_state.get("num_transactions", 0)
@@ -139,6 +138,18 @@ if st.button("Submit"):
         time_elapsed = st.session_state.get("time_elapsed", 0)
         time_elapsed += end_time - start_time
         st.session_state.time_elapsed = time_elapsed
+
+        #call Get Harvest API to display URL
+        url = f"https://ecu-api.avalue.co.th/api/cnb/grow/{selected_id}"
+        response = requests.get(url)
+
+        # Display only the explorerURL from the JSON response
+        if response.status_code == 200:
+            data = response.json()
+            if 'explorerURL' in data:
+                st.write(f"Explorer URL: {data['explorerURL']}")
+            else:
+                st.write("Explorer URL not found in response.")
     else:
         st.error("Error: Unable to write data onto the Blockchain.")
 
