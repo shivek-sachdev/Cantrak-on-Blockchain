@@ -140,8 +140,9 @@ if st.button("Submit"):
         st.session_state.time_elapsed = time_elapsed
 
         #call Get Harvest API to display URL
-        url = f"https://ecu-api.avalue.co.th/api/cnb/grow/{selected_id}"
-        response = requests.get(url)
+        with st.spinner("Loading... Please Wait"):
+            url = f"https://ecu-api.avalue.co.th/api/cnb/grow/{selected_id}"
+            response = requests.get(url)
 
         # Display only the explorerURL from the JSON response
         if response.status_code == 200:
