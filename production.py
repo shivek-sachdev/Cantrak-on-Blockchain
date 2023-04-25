@@ -18,7 +18,7 @@ selected_id = st.selectbox("Transaction ID", data["Transaction ID"])
 selected_row = data.loc[data["Transaction ID"] == selected_id].iloc[0]
 
 # Display the rest of the data for the selected Transaction ID
-transaction_id = st.text_input("Transaction ID", selected_row["Transaction ID"])
+#transaction_id = st.text_input("Transaction ID", selected_row["Transaction ID"])
 production_lot_number = st.text_input("Production Lot Number", selected_row["Production Lot Number"])
 process_name = st.text_input("Process Name", selected_row["Process Name"])
 item_category = st.text_input("Item Category", selected_row["Item Category"])
@@ -38,7 +38,7 @@ status = st.text_input("Status", selected_row["Status"])
 if st.button("Submit"):
     # Define the request payload
     payload = {
-        "id": transaction_id,
+        "id": selected_id,
         "productionLotNo": production_lot_number,
         "processName": process_name,
         "itemCategoryName": item_category,
@@ -77,7 +77,7 @@ if st.button("Submit"):
 
         #call Get Harvest API to display URL
         with st.spinner("Loading... Please Wait"):
-            url = f"https://ecu-api.avalue.co.th/api/cnb/production/{transaction_id}"
+            url = f"https://ecu-api.avalue.co.th/api/cnb/production/{selected_id}"
             response = requests.get(url)
 
         if response.status_code == 200:

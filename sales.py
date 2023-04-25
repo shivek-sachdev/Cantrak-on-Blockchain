@@ -17,7 +17,7 @@ selected_id = st.selectbox("Transaction ID", data["Transaction ID"])
 # Get the row corresponding to the selected Transaction ID
 selected_row = data.loc[data["Transaction ID"] == selected_id].iloc[0]
 
-transaction_id = st.text_input("Transaction ID", selected_row["Transaction ID"])
+#transaction_id = st.text_input("Transaction ID", selected_row["Transaction ID"])
 seller_license_number = st.text_input("Seller License Number", selected_row["Seller License Number"])
 buyer_license_number = st.text_input("Buyer License Number", selected_row["Buyer License Number"])
 transaction_date = st.text_input("Transaction Date", selected_row["Transaction Date"])
@@ -29,7 +29,7 @@ price = st.text_input("Price", selected_row["Price"])
 
 if st.button("Submit"):
     payload = {
-        "Id": transaction_id,
+        "Id": selected_id,
         "seller_license_number": seller_license_number,
         "buyer_license_number": buyer_license_number,
         "transaction_date": transaction_date,
