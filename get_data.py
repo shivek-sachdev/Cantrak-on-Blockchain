@@ -5,7 +5,7 @@ import requests
 ENDPOINTS = {
     "Grow": "https://ecu-api.avalue.co.th/api/cnb/grow/{}",
     "Harvest": "https://ecu-api.avalue.co.th/api/cnb/harvest/{}",
-    "Production": "https://ecu-api.avalue.co.th/api/cnb/production/{}",
+    "Production": "https://ecu-api.avalue.co.th/api/cnb/prod/{}",
     "Sales": "https://ecu-api.avalue.co.th/api/cnb/sales/{}"
 }
 
