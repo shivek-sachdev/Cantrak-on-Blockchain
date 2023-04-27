@@ -4,7 +4,7 @@ import requests
 import time
 
 # Load data from CSV file
-data = pd.read_csv("Cantrak-on-Blockchain\cantrak_data_harvest.csv", encoding="TIS-620")
+data = pd.read_csv("https://raw.githubusercontent.com/shivek-sachdev/Cantrak-on-Blockchain/main/cantrak_data_harvest.csv", encoding="TIS-620")
 
 # Set page title and add image
 st.set_page_config(page_title="Cantrak on Polygon Blockchain", page_icon=":herb:")
