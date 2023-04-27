@@ -91,7 +91,7 @@ if st.button("Submit"):
 # Define dashboard
 st.sidebar.header("Cantrak QR Trace")
 # Display QR Code in sidebar
-image_path = "Cantrak-on-Blockchain/qr-codes/{}.png".format(selected_id)
+image_path = "https://raw.githubusercontent.com/shivek-sachdev/Cantrak-on-Blockchain/main/qr-codes/{}.png".format(selected_id)
 st.sidebar.image(image_path, width=300)
 
 st.sidebar.header("Blockchain Metrics")
