@@ -21,11 +21,13 @@ selected_row = data.loc[data["Transaction ID"] == selected_id].iloc[0]
 seller_license_number = st.text_input("Seller License Number", selected_row["Seller License Number"])
 buyer_license_number = st.text_input("Buyer License Number", selected_row["Buyer License Number"])
 transaction_date = st.text_input("Transaction Date", selected_row["Transaction Date"])
-product_category = st.text_input("Product Category", selected_row["Product Category"])
-product_name = st.text_input("Product Name", selected_row["Product Name"])
-product_quantity = st.text_input("Quantity", selected_row["Quantity"])
-uom = st.text_input("UoM", selected_row["UoM"])
-price = st.text_input("Price", selected_row["Price"])
+
+with st.expander("Product Details"):
+    product_category = st.text_input("Product Category", selected_row["Product Category"])
+    product_name = st.text_input("Product Name", selected_row["Product Name"])
+    product_quantity = st.text_input("Quantity", selected_row["Quantity"])
+    uom = st.text_input("UoM", selected_row["UoM"])
+    price = st.text_input("Price", selected_row["Price"])
 
 if st.button("Submit"):
     payload = {
