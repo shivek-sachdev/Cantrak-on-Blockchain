@@ -21,15 +21,20 @@ selected_row = data.loc[data["Transaction ID"] == selected_id].iloc[0]
 #transaction_id = st.text_input("Transaction ID", selected_row["Transaction ID"])
 production_lot_number = st.text_input("Production Lot Number", selected_row["Production Lot Number"])
 process_name = st.text_input("Process Name", selected_row["Process Name"])
-item_category = st.text_input("Item Category", selected_row["Item Category"])
-item_name = st.text_input("Item Name", selected_row["Item Name"])
-description = st.text_input("Description", selected_row["Description"])
-quantity_prodcued = st.text_input("Quantity Produced", selected_row["Quantity Produced"])
-uom = st.text_input("UoM", selected_row["UoM"])
-expiry_date = st.text_input("Expiry Date", selected_row["Expiry Date"])
-ref_plant_lot_name = st.text_input("Ref. Plant Lot Name", selected_row["Ref. Plant Lot Name"])
-ref_plant_lot_number = st.text_input("Ref. Plant Lot Number", selected_row["Ref. Plant Lot Number"])
-extraction_license_number = st.text_input("Extraction License Number", selected_row["Extraction License Number"])
+
+with st.expander("Product Details"):
+    item_category = st.text_input("Item Category", selected_row["Item Category"])
+    item_name = st.text_input("Item Name", selected_row["Item Name"])
+    description = st.text_input("Description", selected_row["Description"])
+    quantity_prodcued = st.text_input("Quantity Produced", selected_row["Quantity Produced"])
+    uom = st.text_input("UoM", selected_row["UoM"])
+    expiry_date = st.text_input("Expiry Date", selected_row["Expiry Date"])
+
+with st.expander("Cultivation Details"):
+    ref_plant_lot_name = st.text_input("Ref. Plant Lot Name", selected_row["Ref. Plant Lot Name"])
+    ref_plant_lot_number = st.text_input("Ref. Plant Lot Number", selected_row["Ref. Plant Lot Number"])
+    extraction_license_number = st.text_input("Extraction License Number", selected_row["Extraction License Number"])
+
 created_date = st.text_input("Created Date", selected_row["Created Date"])
 created_by = st.text_input("Created By", selected_row["Created By"])
 status = st.text_input("Status", selected_row["Status"])
